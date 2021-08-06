@@ -15,11 +15,17 @@ public class Main {
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
 
-            System.out.println("New connection accepted");
-
-            final String name = in.readLine();
-
-            out.println(String.format("Hi %s, your port is %d", name, clientSocket.getPort()));
+           out.println("Write your name: ");
+           String name = in.readLine();
+           out.println(("Are you child (yes/no)"));
+           String child = in.readLine();
+           String message = "";
+           if (child.equals("yes")) {
+               message = "child";
+           } else {
+               message = "adult";
+           }
+           out.println(String.format("Hi %s, Welcome to %s zone", name, message));
         }catch (IOException e) {
             e.printStackTrace();
         }
